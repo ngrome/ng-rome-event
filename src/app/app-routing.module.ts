@@ -14,10 +14,10 @@ const routes: Routes = [
     /* START MY VIEWS */
 
     { path: 'home', loadChildren: './pages/home/home.module#HomeModule', canActivate: [AuthGuard] },
-    { path: 'eventses/:id', loadChildren: './pages/events-edit/events-edit.module#EventsEditModule', canActivate: [AuthGuard] },
-    { path: 'eventses', loadChildren: './pages/events-list/events-list.module#EventsListModule', canActivate: [AuthGuard] },
+    { path: 'events/:id', loadChildren: './pages/events-edit/events-edit.module#EventsEditModule', canActivate: [AuthGuard] },
+    { path: 'events', loadChildren: './pages/events-list/events-list.module#EventsListModule', canActivate: [AuthGuard] },
 
- /* END MY VIEWS */
+    /* END MY VIEWS */
 
     // SECURITY
     { path: 'login', loadChildren: './pages/login/login.module#LoginModule' }

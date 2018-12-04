@@ -19,7 +19,8 @@
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <input type="text" class="form-control" id="description" [(ngModel)]="search.description" name="description" #description="ngModel">
+                        <input type="text" class="form-control" id="description" [(ngModel)]="search.description" name="description"
+                            #description="ngModel">
                     </div>
                     <div class="form-group">
                         <label for="name">Name</label>
@@ -27,7 +28,8 @@
                     </div>
                     <div class="form-group">
                         <label for="place">Place</label>
-                        <input type="text" class="form-control" id="place" [(ngModel)]="search.place" name="place" #place="ngModel">
+                        <input type="text" class="form-control" id="place" [(ngModel)]="search.place" name="place"
+                            #place="ngModel">
                     </div>
                 </div>
             </div>
@@ -39,24 +41,18 @@
 <table class="table mt-40">
     <thead>
         <tr>
-            <th scope="col">ID</th>
-            <th scope="col">date</th>
-            <th scope="col">description</th>
-            <th scope="col">name</th>
-            <th scope="col">place</th>
+            <th scope="col">Name</th>
+            <th scope="col">Place</th>
+            <th scope="col">Date</th>
             <th>Remove</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let item of list | async | search: { 'date': search.date, 'description': search.description, 'name': search.name, 'place': search.place }">
             <!-- ATTRIBUTES -->
-            <td>
-                <a [routerLink]="['/eventss', item.id]">{{item.id}}</a>
-            </td>
-            <td>{{item.date | date }}</td>
-            <td>{{item.description }}</td>
-            <td>{{item.name }}</td>
+            <td><a [routerLink]="['/events', item.id]">{{item.name }}</a></td>
             <td>{{item.place }}</td>
+            <td>{{item.date | date }}</td>
 
             <!-- DELETE BUTTON -->
             <td>
@@ -96,7 +92,7 @@
 </div>
 
 <!-- BUTTON -->
-<button class="btn btn-primary text-center pull-right mb-20" routerLink="/eventss/new">
+<button class="btn btn-primary text-center pull-right mb-20" routerLink="/events/new">
     <span>
         <i class="fa fa-plus"></i>
     </span>
