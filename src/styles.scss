@@ -118,3 +118,23 @@ html {
     font-weight: bold;
     font-family: 'Roboto', arial, sans-serif;
 }
+
+// EVENTS
+
+.event-list {
+    box-shadow: 0px 0px 10px #c7c1c1;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+.event-list:hover {
+    background-color: #f0eded;
+}
+
+.event-list label {
+    color: gray;
+    cursor: pointer;
+}
