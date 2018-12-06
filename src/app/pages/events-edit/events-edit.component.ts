@@ -17,7 +17,7 @@ import { Events } from '../../domain/ng-rome_db/events';
 *
 * eventsService.get
 *	@description CRUD ACTION get
-*	@param ObjectId id Id 
+*	@param ObjectId id Id
 *
 * eventsService.update
 *	@description CRUD ACTION update
@@ -37,9 +37,8 @@ import { Events } from '../../domain/ng-rome_db/events';
 export class EventsEditComponent implements OnInit {
     item: any = {};
     itemDoc: AngularFirestoreDocument<Events>;
-    isNew: Boolean = true;
     formValid: Boolean;
-
+    idItem: string;
 
 
     constructor(
@@ -54,12 +53,10 @@ export class EventsEditComponent implements OnInit {
      */
     ngOnInit() {
         this.route.params.subscribe(param => {
-            const id: string = param['id'];
-            if (id !== 'new') {
-                this.isNew = false;
-                this.itemDoc = this.eventsService.get(id);
+            if (param['id'] !== 'new') {
+                this.idItem = param['id'];
+                this.itemDoc = this.eventsService.get(this.idItem);
                 this.itemDoc.valueChanges().subscribe(item => this.item = item);
-
             }
             // Get relations
         });
@@ -76,16 +73,27 @@ export class EventsEditComponent implements OnInit {
     save(formValid: boolean): void {
         this.formValid = formValid;
         if (formValid) {
-            if (this.isNew) {
+            if (!this.idItem) {
                 // Create
-                this.eventsService.create(this.item);
-                this.isNew = false;
+                this.eventsService.create(this.item).then(res => {
+                    this.idItem = res.id;
+                });
             } else {
                 // Update
                 this.eventsService.update(this.itemDoc, this.item);
             }
             this.goBack();
         }
+    }
+
+
+    /**
+     * Delete Events
+     *
+     */
+    delete(): void {
+        this.eventsService.remove(this.idItem);
+        this.goBack();
     }
 
     /**
