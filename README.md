@@ -88,3 +88,13 @@ Generate your project with the command
 You can customize your generator template working with files in .skaffolder folder in your project root.
 
 Please refer to https://skaffolder.com/#/documentation/skaffolder-cli for more information.
+
+--------------
+### DEPLOY WITH FIREBASE
+--------------
+To deploy run:
+``` bash
+$ npm install -g firebase-tools
+$ firebase login
+$ firebase deploy
+```

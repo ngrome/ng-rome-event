@@ -30,6 +30,7 @@
 
                     <!-- BUTTON BAR -->
                     <div class="mt-40">
+                        <button class="btn btn-danger pull-left" *ngIf="idItem" (click)="delete()">Delete</button>
                         <button class="btn btn-primary pull-right" (click)="save(editForm.valid)">Save</button>
                         <button class="btn btn-secondary pull-right mr-2" (click)="goBack()">Back To List</button>
                     </div>
